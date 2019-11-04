@@ -391,7 +391,7 @@ class ModelBsmCondMC:
         
         #Produce the vol simulation path as above
         volpath = np.ones((self.sample, self.step + 1))
-        Z1 = np.random.normal(size=(self.sample, self.N))
+        Z1 = np.random.normal(size=(self.sample, self.step))
         volpath[:,1:] = np.cumprod(np.exp(self.alpha*np.sqrt(delta_t)*Z1 - 0.5*self.alpha**2*delta_t), axis = 1)
         volpath = sigma * volpath
 
@@ -461,7 +461,7 @@ class ModelNormalCondMC:
 
         #Produce the vol simulation path as above
         volpath = np.ones((self.sample, self.step + 1))
-        Z1 = np.random.normal(size=(self.sample, self.N))
+        Z1 = np.random.normal(size=(self.sample, self.step))
         volpath[:,1:] = np.cumprod(np.exp(self.alpha*np.sqrt(delta_t)*Z1 - 0.5*self.alpha**2*delta_t), axis = 1)
         volpath = sigma * volpath
          
